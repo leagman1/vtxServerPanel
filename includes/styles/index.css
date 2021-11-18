@@ -1,0 +1,27 @@
+*, html, body {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.pageContainer {
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+
+    grid-template-areas:
+     "header-left header header-right"
+     "main-left main main-right"
+     "footer-left footer footer-right";
+
+    place-items: center;
+}
+
+.header {
+    grid-area: header;
+}
+
+.footer-left {
+    grid-area: footer-left;
+}
