@@ -1,0 +1,23 @@
+{
+  "name": "vtx-server-panel",
+  "version": "1.0.0",
+  "description": "Simple web panel for Vertex servers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leagman1/vtxServerPanel.git"
+  },
+  "author": "leagman1",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leagman1/vtxServerPanel/issues"
+  },
+  "homepage": "https://github.com/leagman1/vtxServerPanel#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^3.0.2"
+  }
+}
