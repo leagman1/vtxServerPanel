@@ -9,6 +9,7 @@
 
     display: grid;
     grid-template-columns: 1fr 6fr 1fr;
+    grid-template-rows: 1fr 6fr 1fr;
 
     grid-template-areas:
      "header-left header header-right"
