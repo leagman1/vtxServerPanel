@@ -11,8 +11,8 @@ hmtl
                 p Server state 
                     span(id="serverStateInfo") &nbsp;
                 div(class="footer-buttons")
-                    button(type="button" class="btn btn-stop") Stop
-                    button(type="button" class="btn btn-start") Start
+                    button(type="button" id="stopServer" class="btn btn-stop") Stop
+                    button(type="button" id="startServer" class="btn btn-start") Start
         script 
             include ..\includes\scripts\serverRequests.js
             include ..\includes\scripts\main.js

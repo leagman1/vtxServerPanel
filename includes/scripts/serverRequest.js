@@ -17,8 +17,3 @@ async function postData(url = '', data = {}) {
     });
     return response; // parses JSON response into native JavaScript objects
   }
-  
-postData('/rs', { answer: 42 })
-    .then(data => {
-        console.log(data); // JSON data parsed by `data.json()` call
-    });
