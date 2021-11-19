@@ -1,3 +1,6 @@
 {
-    "path": ""
+    "path": "D:/Vertex/Server/",
+    "startFunction": "startServerWindows",
+    "stopFunction": "stopServerWindows",
+    "discoverFunction": "discoverServerWindows"
 }

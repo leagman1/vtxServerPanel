@@ -11,11 +11,13 @@ app.get('/', (req, res) => {
 })
 
 app.post("/sc", (req, res) => {
-    console.log("New server command: " + req.body.command);
+    console.log("Executing server command: " + req.body.command);
 
     res.json({topkek: "lelelel"});
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Started vtxServerPanel.`)
 })
+
+svManager.serverCommand("start");
