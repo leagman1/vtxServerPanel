@@ -12,6 +12,12 @@ app.get('/', (req, res) => {
 
 app.post("/sc", (req, res) => {
     console.log("Executing server command: " + req.body.command);
+    try {
+      svManager.serverCommand(req.command);
+    } catch (err) {
+      console.error(err);
+      res.json({statusCode: 400, statusText: err});
+    }
 
     res.json({topkek: "lelelel"});
 });

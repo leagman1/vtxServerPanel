@@ -1,6 +1,5 @@
 {
     "path": "D:/Vertex/Server/",
-    "startFunction": "startServerWindows",
-    "stopFunction": "stopServerWindows",
-    "discoverFunction": "discoverServerWindows"
+    "os": "Linux",
+    "commandMode": "default"
 }
