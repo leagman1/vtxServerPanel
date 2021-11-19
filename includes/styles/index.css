@@ -8,7 +8,8 @@
     height: 100vh;
 
     display: grid;
-    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-rows: 1fr 6fr 1fr;
 
     grid-template-areas:
      "header-left header header-right"
@@ -22,6 +23,38 @@
     grid-area: header;
 }
 
-.footer-left {
-    grid-area: footer-left;
+.footer {
+    grid-area: footer;
+
+    place-self: center;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+}
+
+.footer-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.btn {
+    width: 100px;
+    height: 50px;
+}
+
+.btn-start {
+
+}
+
+.btn-stop {
+
+}
+
+#serverStateInfo {
+    display: inline-block;
+    width: 50px;
+    background: red;
 }

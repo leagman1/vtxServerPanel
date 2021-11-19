@@ -6,7 +6,13 @@ hmtl
             include ..\includes\styles\index.css
     body 
         div(class="pageContainer")
-            p(class="header") Links und so'n Quatsch
-            p(class="footer-left") Links unten?
+            h1(class="header") dc:da server panel
+            div(class="footer")
+                p Server state 
+                    span(id="serverStateInfo") &nbsp;
+                div(class="footer-buttons")
+                    button(type="button" class="btn btn-stop") Stop
+                    button(type="button" class="btn btn-start") Start
         script 
             include ..\includes\scripts\serverRequests.js
+            include ..\includes\scripts\main.js
