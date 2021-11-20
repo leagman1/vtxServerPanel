@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const svManager = require("./svManager.js");
+const svManager = require("./lib/svManager.js");
 
 app.use(express.json());
 app.set("view engine", "pug");
