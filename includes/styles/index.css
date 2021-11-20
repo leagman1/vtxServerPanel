@@ -55,6 +55,10 @@
 
 #serverStateInfo {
     display: inline-block;
-    width: 50px;
-    background: red;
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
+    background: green;
+
+    margin-left: 10px;
 }

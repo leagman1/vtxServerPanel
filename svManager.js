@@ -1,4 +1,4 @@
-const util = require("./svUtil.js");
+const util = require("./lib/svUtil.js");
 const fs = require("fs");
 
 var options = JSON.parse(fs.readFileSync("options.json", {encoding: "utf8"}));
