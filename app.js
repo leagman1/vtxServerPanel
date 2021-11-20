@@ -26,4 +26,4 @@ app.listen(port, () => {
   console.log(`Started vtxServerPanel.`)
 })
 
-// svManager.serverCommand("start");
+console.log(svManager.getSettings());

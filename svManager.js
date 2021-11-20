@@ -1,17 +1,28 @@
-const util = require("./lib/svUtil.js");
+const svUtil = require("./lib/svUtil.js");
+const settingsUtil = require("./lib/settingsUtil.js");
 const fs = require("fs");
 
 var options = JSON.parse(fs.readFileSync("options.json", {encoding: "utf8"}));
 
 module.exports = {
     serverCommand: serverCommand,
-    serverState: getServerState
+    serverState: getServerState,
+    getSettings: getSettings,
+    setSettings: setSettings
 }
 
 function serverCommand(type){
-    return util[type + "Function" + options.os]();
+    return svUtil[type + "Function" + options.os]();
 }
 
 function getServerState(){
-    return Number(!!util["discoverFunction" + options.os]());
+    return Number(!!svUtil["discoverFunction" + options.os]());
+}
+
+function getSettings(){
+    return settingsUtil.parseSettingsToJSON();
+}
+
+function setSettings(){
+
 }
