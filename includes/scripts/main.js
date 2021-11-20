@@ -39,3 +39,15 @@ function showSettingsTab(event, tabName){
 
     document.getElementById("link" + tabName).classList.add("active");
 }
+
+function updateSetting(event, settingName){
+    // they are interpolated into the site via pug. See index.pug
+    var settings = svSettings;
+
+    settings.forEach(function searchCategories(category){
+        category.settings.forEach(function searchSetting(setting){
+            if(setting.name == settingName)
+                setting.value = event.target.value;
+        })
+    })
+}
