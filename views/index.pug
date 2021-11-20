@@ -4,9 +4,20 @@ hmtl
         title= title 
         style
             include ..\includes\styles\index.css
+            include ..\includes\styles\tabs.css
     body 
         div(class="pageContainer")
             h1(class="header") dc:da server panel
+            div(class="main")
+                div(class="settingsTabLinksContainer")
+                    each category, key in svSettings
+                        button(class="settingsTabLink" type="button" onclick="showSettingsTab(event, \"" + category.name + "\")")= category.name
+                each category, key in svSettings
+                    div(class="settingsTab" id=category.name)
+                        each setting, settingKey in category.settings
+                            div(class="setting")
+                                span= setting.name
+                                span= setting.value
             div(class="footer")
                 p Server state 
                     span(id="serverStateInfo") &nbsp;

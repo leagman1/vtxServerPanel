@@ -12,4 +12,22 @@ document.addEventListener("DOMContentLoaded", function(){
                 console.log(data); // JSON data parsed by `data.json()` call
             });
     });
+
+    var settingsTabs = document.getElementsByClassName("settingsTab");
+    
+    for(let i = 0; i< settingsTabs.length; i++){
+        settingsTabs[i].style.display = "none";
+    }
+
+    document.getElementById("GameModeBase").style.display = "grid";
 });
+
+function showSettingsTab(event, tabName){
+    var settingsTabs = document.getElementsByClassName("settingsTab");
+
+    for(let i = 0; i< settingsTabs.length; i++){
+        settingsTabs[i].style.display = "none";
+    }
+
+    document.getElementById(tabName).style.display = "grid";
+}

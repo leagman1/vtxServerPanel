@@ -7,7 +7,7 @@ app.use(express.json());
 app.set("view engine", "pug");
 
 app.get('/', (req, res) => {
-  res.render("index", {title: "What up, dude!", message: "Oh hi, Mark!"});
+  res.render("index", {svSettings: svManager.getSettings()});
 })
 
 app.post("/sc", (req, res) => {
@@ -25,5 +25,3 @@ app.post("/sc", (req, res) => {
 app.listen(port, () => {
   console.log(`Started vtxServerPanel.`)
 })
-
-console.log(svManager.getSettings());

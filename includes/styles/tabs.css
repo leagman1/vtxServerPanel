@@ -1,0 +1,33 @@
+.settingsTabLinksContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.settingsTabLink {
+    cursor: pointer;
+    transition: 0.3s;
+
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 0px;
+    padding: 15px;
+}
+
+.settingsTabLink:hover {
+    background-color: #ddd;
+}
+
+.settingsTabLink.active {
+    background-color: #ccc;
+}
+
+.settingsTab {
+    display: grid;
+
+    grid-template-columns: 1fr;
+}
+
+.setting {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+}
