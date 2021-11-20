@@ -22,12 +22,25 @@
 
 .settingsTab {
     display: grid;
+    overflow: auto;
+    height: 80vh;
 
     grid-template-columns: 1fr;
+    grid-template-rows: 50px;
+    grid-auto-rows: 25px;
+
+    grid-gap: 5px;
+
+    padding: 0 25px 15px 25px;
 }
 
 .setting {
     display: grid;
 
     grid-template-columns: 1fr 1fr;
+}
+
+h3 {
+    align-self: center;
+    padding-left: 25px;
 }

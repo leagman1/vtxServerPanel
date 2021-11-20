@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     document.getElementById("GameModeBase").style.display = "grid";
+    document.getElementById("linkGameModeBase").classList.add("active");
 });
 
 function showSettingsTab(event, tabName){
@@ -30,4 +31,11 @@ function showSettingsTab(event, tabName){
     }
 
     document.getElementById(tabName).style.display = "grid";
+
+    var links = document.getElementsByTagName("button");
+    for(let i = 0; i< links.length; i++){
+        links[i].classList.remove("active");
+    }
+
+    document.getElementById("link" + tabName).classList.add("active");
 }

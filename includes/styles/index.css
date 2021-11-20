@@ -9,7 +9,7 @@
 
     display: grid;
     grid-template-columns: 2fr 3fr 2fr;
-    grid-template-rows: 1fr 6fr 1fr;
+    grid-template-rows: 1fr 80vh 1fr;
 
     grid-template-areas:
      "header-left header header-right"
@@ -26,11 +26,11 @@
 .main {
     grid-area: main;
     height: 100%;
+    width: 100%;
 
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr;
-    grid-gap: 25px;
 
     border: 1px solid rgba(0,0,0,0.2);
 }

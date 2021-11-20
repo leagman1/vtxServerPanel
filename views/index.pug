@@ -11,13 +11,14 @@ hmtl
             div(class="main")
                 div(class="settingsTabLinksContainer")
                     each category, key in svSettings
-                        button(class="settingsTabLink" type="button" onclick="showSettingsTab(event, \"" + category.name + "\")")= category.name
+                        button(class="settingsTabLink" id="link" + category.name type="button" onclick="showSettingsTab(event, \"" + category.name + "\")")= category.displayName
                 each category, key in svSettings
                     div(class="settingsTab" id=category.name)
+                        h3= category.name
                         each setting, settingKey in category.settings
                             div(class="setting")
-                                span= setting.name
-                                span= setting.value
+                                span= setting.displayName
+                                input(type="text" value=setting.value)
             div(class="footer")
                 p Server state 
                     span(id="serverStateInfo") &nbsp;
