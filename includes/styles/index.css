@@ -72,7 +72,14 @@
     width: 15px;
     height: 15px;
     border-radius: 10px;
-    background: green;
 
     margin-left: 10px;
+}
+
+.online {
+    background-color: lightgreen;
+}
+
+.offline {
+    background-color: red;
 }

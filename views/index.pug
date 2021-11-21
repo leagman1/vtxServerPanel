@@ -21,7 +21,10 @@ hmtl
                                 input(type="text" value=setting.value onchange="updateSetting(event, \"" + setting.name + "\")")
             div(class="footer")
                 p Server state 
-                    span(id="serverStateInfo") &nbsp;
+                    if isOnline == true
+                        span(id="serverStateInfo" class="online") &nbsp;
+                    else 
+                        span(id="serverStateInfo"  class="offline") &nbsp;
                 div(class="footer-buttons")
                     button(type="button" id="stopServer" class="btn btn-stop") Stop
                     button(type="button" id="saveSettings" class="btn btn-save") Save

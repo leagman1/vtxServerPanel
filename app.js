@@ -9,7 +9,10 @@ app.use(express.json());
 app.set("view engine", "pug");
 
 app.get('/', (req, res) => {
-  res.render("index", {svSettings: svUtil.getSettings()});
+  var isOnline = svUtil.getServerState();
+  console.log("Is server online?: " + isOnline);
+
+  res.render("index", {svSettings: svUtil.getSettings(), isOnline: isOnline});
 });
 
 app.post("/sc", (req, res) => {
