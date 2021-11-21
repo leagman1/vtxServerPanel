@@ -14,9 +14,11 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     document.getElementById("saveSettings").addEventListener("click", function(e){
-        postData('/sc', {command: "save", settings: svSettings})
+        postData('/sc', {command: "save", svSettings: svSettings})
             .then(data => {
                 console.log(data); // JSON data parsed by `data.json()` call
+
+                location.reload();
             });
     });
 
