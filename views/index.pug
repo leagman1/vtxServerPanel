@@ -14,7 +14,7 @@ hmtl
                         button(class="settingsTabLink" id="link" + category.name type="button" onclick="showSettingsTab(event, \"" + category.name + "\")")= category.displayName
                 each category, key in svSettings
                     div(class="settingsTab" id=category.name)
-                        h3= category.name
+                        h3= category.displayName
                         each setting, settingKey in category.settings
                             div(class="setting")
                                 span= setting.displayName

@@ -1,6 +1,7 @@
 {
     "path": "D:/Vertex/Server/MCS/",
-    "os": "Windows",
-    "commandMode": "default",
-    "pw": ""
+    "os": "windows",
+    "custom": false,
+    "pw": "",
+    "port": "8080"
 }
