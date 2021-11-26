@@ -1,5 +1,3 @@
-const rq = new XMLHttpRequest();
-
 async function postData(url = '', data = {}) {
     // Default options are marked with *
     const response = await fetch(url, {
@@ -17,8 +15,3 @@ async function postData(url = '', data = {}) {
     });
     return response; // parses JSON response into native JavaScript objects
   }
-  
-postData('/rs', { answer: 42 })
-    .then(data => {
-        console.log(data); // JSON data parsed by `data.json()` call
-    });

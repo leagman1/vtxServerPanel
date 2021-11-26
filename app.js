@@ -1,19 +1,31 @@
+const fs = require("fs");
+const {port} = JSON.parse(fs.readFileSync("options.json", {encoding: "utf8"}));
+const svUtil = require("./lib/svUtil.js");
+
 const express = require('express')
 const app = express()
-const port = 3000
-const svManager = require("./lib/svManager.js");
 
+app.use(express.json());
 app.set("view engine", "pug");
 
 app.get('/', (req, res) => {
-  res.render("index", {title: "What up, dude!", message: "Oh hi, Mark!"});
-})
+  res.render("index", {svSettings: svUtil.getSettings(), isOnline: !!svUtil.getServerState()});
+});
 
-app.post("/rs", (req, res) => {
-    svManager.test();
-    res.send("ye");
+app.post("/sc", (req, res) => {
+    console.log("Executing server command: " + req.body.command);
+
+    var commandResult = false;
+
+    try {
+      commandResult = svUtil.serverCommand(req.body);
+    } catch (err) {
+      console.error(err);
+    }
+
+    res.json({commandResult: commandResult});
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+  console.log("Started vtxServerPanel.");
+});

@@ -1,0 +1,12 @@
+{
+    "svargs": {
+        "map": "P_FFA_COMPLEX",
+        "game": "CONTROL",
+        "servername": "vtxServer"
+    },
+    "path": "D:\\Vertex\\Server\\MCS\\",
+    "os": "windows",
+    "pw": "",
+    "port": "80",
+    "custom": false
+}
