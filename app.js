@@ -27,5 +27,5 @@ app.post("/sc", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Started vtxServerPanel.`)
+  console.log("Started vtxServerPanel.");
 });
