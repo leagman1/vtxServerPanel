@@ -1,6 +1,8 @@
 const fs = require('fs');
 const cp = require('child_process');
-var settingsUtil = require("./settingsUtil.js");
+const path = require("path");
+
+var settingsUtil = require(path.join(__dirname, "/settingsUtil.js"));
 
 const options = JSON.parse(fs.readFileSync("options.json", {encoding: "utf8"}));
 

@@ -3,14 +3,12 @@ module.exports = {
     writeSettingsFromJSON: writeSettingsFromJSON
 }
 
-const {readFileSync, writeFileSync} = require("fs");
-const options = JSON.parse(readFileSync("options.json", {encoding: "utf8"}));
+const path = require("path");
 
-if(options.os == "windows"){
-    var URLGameINI = options.path + "Saved/Config/WindowsServer/Game.ini";
-} else if(options.os == "linux"){
-    var URLGameINI = options.path + "Saved\\Config\\LinuxServer\\Game.ini";
-}
+const {readFileSync, writeFileSync} = require("fs");
+const options = JSON.parse(readFileSync(path.join("options.json"), {encoding: "utf8"}));
+
+var URLGameINI = path.join(options.path, "Saved", "Config", "WindowsServer", "Game.ini");
 
 function parseSettingsToJSON(){
     var settingsData = readSettingsFile().match(/\[[a-zA-Z]*\]|.*=.*/g);
@@ -80,13 +78,13 @@ function writeSettingsFromJSON(settings){
 }
 
 function readSettingsFile(){
-    var testPath = options.path + "Saved/Config/WindowsServer/Game_test.ini";
+    var testPath = path.join(options.path, "Saved", "Config", "WindowsServer", "Game_test.ini");
 
     return readFileSync(testPath, "utf8");
 }
 
 function writeSettingsFile(data){
-    var testPath = options.path + "Saved/Config/WindowsServer/Game_test.ini";
+    var testPath = path.join(options.path, "Saved", "Config", "WindowsServer", "Game_test.ini");
     writeFileSync(testPath, data, "utf8");
     // URLGameINI
 }

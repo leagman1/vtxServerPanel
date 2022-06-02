@@ -3,8 +3,10 @@ hmtl
     head 
         title= title 
         style
-            include ..\includes\styles\index.css
-            include ..\includes\styles\tabs.css
+            //- link(rel="stylesheet" href="/css/index.css" type="text/css")
+            //- link(rel="stylesheet" href="/css/tabs.css" type="text/css")
+            include ..\public\css\index.css
+            include ..\public\css\tabs.css
     body 
         div(class="pageContainer")
             h1(class="header") Vertex Server Panel
@@ -32,5 +34,5 @@ hmtl
         script. 
             svSettings = !{JSON.stringify(svSettings)};
         script 
-            include ..\includes\scripts\serverRequests.js
-            include ..\includes\scripts\main.js
+            include ..\public\js\serverRequests.js
+            include ..\public\js\main.js
