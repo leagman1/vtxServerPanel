@@ -79,24 +79,26 @@ function setSettings(svSettings){
 function startServerLinux(){
     console.log("Executing default start handler (Linux).");
 
-    if(!PID){
-        try {
-            out = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
-            err = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
+    if(PID){
+        return false;
+    }
 
-            var args = [
-                options.svargs.map + "?game=" + options.svargs.gameMode,
-                "-servername=" + options.svargs.servername,
-            ];
+    try {
+        out = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
+        err = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
+
+        var args = [
+            options.svargs.map + "?game=" + options.svargs.gameMode,
+            "-servername=" + options.svargs.servername,
+        ];
+    
+        var child = cp.spawn(path.join(options.path, "Binaries", "Linux", "MCSServer"), args, {detached: true, stdio: [ 'ignore', out, err ]});
+        child.unref();
         
-            var child = cp.spawn(path.join(options.path, "Binaries", "Linux", "MCSServer"), args, {detached: true, stdio: [ 'ignore', out, err ]});
-            child.unref();
-            
-        } catch(err) {
-            console.log("Something went wrong when trying to start the server:\n\n" + err);
+    } catch(err) {
+        console.log("Something went wrong when trying to start the server:\n\n" + err);
 
-            return false;
-        }
+        return false;
     }
 
     return true;
@@ -107,19 +109,21 @@ function stopServerLinux(){
 
     var PID = discoverServerLinux();
 
-    if(PID){
-        if(out){
-            fs.close(out);
-            fs.close(err);
-        }
+    if(!PID){
+        return false;
+    }
 
-        try {
-            cp.execSync("kill " + PID);
-        } catch (err) {
-            console.log("Something went wrong when trying to stop the server:\n\n" + err);
+    if(out){
+        fs.close(out);
+        fs.close(err);
+    }
 
-            return false;
-        }
+    try {
+        cp.execSync("kill " + PID);
+    } catch (err) {
+        console.log("Something went wrong when trying to stop the server:\n\n" + err);
+
+        return false;
     }
 
     return true;
@@ -139,8 +143,9 @@ function discoverServerLinux(){
                 break;
             }
         }
-        if(PID)
+        if(PID) {
             console.log("Result: server running.");
+        }
     } catch (err){
         console.log("Result: server not running.");
         return false;
@@ -155,24 +160,26 @@ function startServerWindows(){
 
     var PID = discoverServerWindows();
 
-    if(!PID){
-        try {
-            out = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
-            err = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
+    if(PID){
+        return false;
+    }
 
-            var args = [
-                options.svargs.map + "?game=" + options.svargs.gameMode,
-                "-servername=" + options.svargs.servername,
-            ];
-        
-            var child = cp.spawn(path.join(options.path, "Binaries", "Win64", "MCSServer.exe"), args, {detached: true, stdio: [ 'ignore', out, err ] });
-            child.unref();
+    try {
+        out = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
+        err = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
 
-        } catch(err) {
-            console.log("Something went wrong when trying to start the server:\n\n" + err);
+        var args = [
+            options.svargs.map + "?game=" + options.svargs.gameMode,
+            "-servername=" + options.svargs.servername,
+        ];
+    
+        var child = cp.spawn(path.join(options.path, "Binaries", "Win64", "MCSServer.exe"), args, {detached: true, stdio: [ 'ignore', out, err ] });
+        child.unref();
 
-            return false;
-        }
+    } catch(err) {
+        console.log("Something went wrong when trying to start the server:\n\n" + err);
+
+        return false;
     }
 
     return true;
@@ -183,19 +190,21 @@ function stopServerWindows(){
 
     var PID = discoverServerWindows();
 
-    if(PID){
-        if(out){
-            fs.close(out);
-            fs.close(err);
-        }
+    if(!PID){
+        return false;
+    }
+    
+    if(out){
+        fs.close(out);
+        fs.close(err);
+    }
 
-        try {
-            cp.execSync("taskkill /PID " + PID);
-        } catch (err) {
-            console.log("Something went wrong when trying to stop the server:\n\n" + err);
+    try {
+        cp.execSync("taskkill /PID " + PID);
+    } catch (err) {
+        console.log("Something went wrong when trying to stop the server:\n\n" + err);
 
-            return false;
-        }
+        return false;
     }
 
     return true;
