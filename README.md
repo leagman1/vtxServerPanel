@@ -1,12 +1,12 @@
-# vtxServerPanel
-Simple server panel for the pre-alpha game Vertex.  
+# Vertex Server Panel
+Simple admin console for the pre-alpha game Vertex.  
 Can start and stop a single server and edit its settings.
 
-Designed on and for 1080p monitors.
+Designed for 1080p.
 
 # Requirements
 
-A recent stable nodejs version. Any should work, the app does not use advanced features.
+A recent stable nodejs version. Any should work, the app does not use advanced features.  
 
 # Usage
 
@@ -17,4 +17,4 @@ A recent stable nodejs version. Any should work, the app does not use advanced f
     * port: The port you want the webserver to run on.
     * custom: Not used.
 
-2. Start the server with either "npm start" or "node app.js".
+2. Start the server from the console with either "npm start" or "node app.js".
