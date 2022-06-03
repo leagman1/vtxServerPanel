@@ -1,6 +1,5 @@
 # vtxServerPanel
-Simple server panel for the pre-alpha game Vertex.
-
+Simple server panel for the pre-alpha game Vertex.  
 Can start, stop or edit settings for a single Vertex server.
 
 Designed on and for 1080p monitors.
