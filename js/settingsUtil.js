@@ -7,8 +7,10 @@ const path = require("path");
 
 const {readFileSync, writeFileSync} = require("fs");
 const options = JSON.parse(readFileSync(path.join("options.json"), {encoding: "utf8"}));
+options.path = options.path.split(/\\|\//).join(path.sep);
 
 var URLGameINI = path.join(options.path, "Saved", "Config", "WindowsServer", "Game.ini");
+// var testPath = path.join(options.path, "Saved", "Config", "WindowsServer", "Game_test.ini");
 
 function parseSettingsToJSON(){
     var settingsData = readSettingsFile().match(/\[[a-zA-Z]*\]|.*=.*/g);
@@ -60,6 +62,8 @@ function parseSettingsToJSON(){
 }
 
 function writeSettingsFromJSON(settings){
+    console.log("Serialising settings..");
+
     var settingsString = "";
 
     settings.forEach(function stringifyCategories(category){
@@ -78,15 +82,15 @@ function writeSettingsFromJSON(settings){
 }
 
 function readSettingsFile(){
-    var testPath = path.join(options.path, "Saved", "Config", "WindowsServer", "Game_test.ini");
+    console.log("Reading settings file..");
 
-    return readFileSync(testPath, "utf8");
+    return readFileSync(URLGameINI, "utf8");
 }
 
 function writeSettingsFile(data){
-    var testPath = path.join(options.path, "Saved", "Config", "WindowsServer", "Game_test.ini");
-    writeFileSync(testPath, data, "utf8");
-    // URLGameINI
+    console.log("Writing settings file..");
+
+    writeFileSync(URLGameINI, data, {encoding: "utf8"});
 }
 
 function getSettingDisplayName(settingNameRaw){

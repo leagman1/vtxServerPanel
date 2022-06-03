@@ -7,7 +7,7 @@ const svUtil = require(path.join(__dirname, "js", "svUtil.js"));
 
 const app = express()
 
-process.title = "vcl_info_site";
+process.title = "vtxServerPanel";
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");

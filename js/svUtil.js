@@ -2,9 +2,10 @@ const fs = require('fs');
 const cp = require('child_process');
 const path = require("path");
 
-var settingsUtil = require(path.join(__dirname, "/settingsUtil.js"));
+var settingsUtil = require(path.join(__dirname, "settingsUtil.js"));
 
 const options = JSON.parse(fs.readFileSync("options.json", {encoding: "utf8"}));
+options.path = options.path.split(/\\|\//).join(path.sep);
 
 // used for pipeing output of the server processes
 var out;
@@ -38,7 +39,7 @@ function serverCommand(rqBody){
     var command = rqBody.command;
 
     if(command == "save") {
-        return setSettings(rqBody.settings);
+        return setSettings(rqBody.svSettings);
     } else if(options.custom) {
         return commandMap["custom"][command]();
     } else {
@@ -58,6 +59,8 @@ function getSettings(){
 }
 
 function setSettings(svSettings){
+    console.log("Saving settings..", svSettings);
+
     var isRunning = getServerState();
 
     if(isRunning)
@@ -74,19 +77,19 @@ function setSettings(svSettings){
 
 // Linux
 function startServerLinux(){
-    console.log("Executing default, start handler (Linux).");
+    console.log("Executing default start handler (Linux).");
 
     if(!PID){
         try {
-            out = fs.openSync(options.path + 'Saved/Logs/vtxServerPanel_serverLog.log', 'a');
-            err = fs.openSync(options.path + 'Saved/Logs/vtxServerPanel_serverLog.log', 'a');
+            out = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
+            err = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
 
             var args = [
-                options.svargs.map + "?game=" + options.svargs.game,
+                options.svargs.map + "?game=" + options.svargs.gameMode,
                 "-servername=" + options.svargs.servername,
             ];
         
-            var child = cp.spawn(options.path + "Binaries/Linux/MCSServer", args, {detached: true, stdio: [ 'ignore', out, err ] });
+            var child = cp.spawn(path.join(options.path, "Binaries", "Linux", "MCSServer"), args, {detached: true, stdio: [ 'ignore', out, err ]});
             child.unref();
             
         } catch(err) {
@@ -154,15 +157,15 @@ function startServerWindows(){
 
     if(!PID){
         try {
-            out = fs.openSync(options.path + 'Saved\\Logs\\vtxServerPanel_serverLog.log', 'a');
-            err = fs.openSync(options.path + 'Saved\\Logs\\vtxServerPanel_serverLog.log', 'a');
+            out = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
+            err = fs.openSync(path.join(options.path, "Saved", "Logs", "vtxServerPanel_serverLog.log"), 'a');
 
             var args = [
-                options.svargs.map + "?game=" + options.svargs.game,
+                options.svargs.map + "?game=" + options.svargs.gameMode,
                 "-servername=" + options.svargs.servername,
             ];
         
-            var child = cp.spawn(options.path + "Binaries\\Win64\\MCSServer.exe", args, {detached: true, stdio: [ 'ignore', out, err ] });
+            var child = cp.spawn(path.join(options.path, "Binaries", "Win64", "MCSServer.exe"), args, {detached: true, stdio: [ 'ignore', out, err ] });
             child.unref();
 
         } catch(err) {
