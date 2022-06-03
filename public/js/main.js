@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function(){
         postData('/sc', {command: "start"})
             .then(data => {
                 if(data.commandResult){
-                    alert("Started server.\nTo edit settings, you have to stop the server first.");
+                    alert("Started server.");
                     location.reload();
                 } else {
                     alert("Server already running.");
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     alert("Saved settings.");
                     location.reload();
                 } else {
-                    alert("Could not save settings.\nPlease try deez nuts or stepping on a bee.");
+                    alert("Could not save settings.\nPlease stop the server before saving settings.");
                     location.reload();
                 }
             });

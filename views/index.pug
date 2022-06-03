@@ -20,7 +20,19 @@ hmtl
                         each setting, settingKey in category.settings
                             div(class="setting")
                                 span= setting.displayName
-                                input(type="text" value=setting.value onchange="updateSetting(event, \"" + setting.name + "\")")
+                                if(setting.type)
+                                    if(setting.type == "boolean")
+                                        select(onchange="updateSetting(event, \"" + setting.name + "\")")
+                                            if(setting.value == "True")
+                                                option(value="True" selected) True
+                                                option(value="False") False
+                                            else 
+                                                option(value="True") True
+                                                option(value="False" selected) False
+                                    else if(setting.type == "number")
+                                        input(type="number" value=setting.value onchange="updateSetting(event, \"" + setting.name + "\")")
+                                else
+                                    input(type="text" value=setting.value onchange="updateSetting(event, \"" + setting.name + "\")")
             div(class="footer")
                 p Server state 
                     if isOnline == true

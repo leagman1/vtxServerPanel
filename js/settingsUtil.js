@@ -47,6 +47,8 @@ function parseSettingsToJSON(){
                 setting.displayName = getSettingDisplayName(settingRaw[0]);
                 setting.name = settingRaw[0];
                 setting.value = settingRaw[1];
+
+                setting.type = getSettingType(setting.value);
             }
 
             category.settings.push(setting);
@@ -95,4 +97,21 @@ function writeSettingsFile(data){
 
 function getSettingDisplayName(settingNameRaw){
     return settingNameRaw.split(/(?=[A-Z])/).join(" ");
+}
+
+function getSettingType(value){
+    if(value == "True" || value == "False"){
+        return "boolean";
+    }
+
+    /** future use
+    numberValue = Number(value);
+    numberValue = !Number.isNaN(numberValue);
+
+    if(numberValue){
+        return "number";
+    }
+    */
+
+    return false;
 }
